@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   BsMicFill, BsMicMuteFill,
   BsCameraVideoFill, BsCameraVideoOffFill,
@@ -7,6 +7,7 @@ import {
   BsClipboard, BsCheckLg,
 } from 'react-icons/bs';
 import { MdCallEnd } from 'react-icons/md';
+import Navbar from '../components/Navbar.tsx';
 
 const MEETING_ID = 'ABC-1234-XYZ';
 
@@ -92,35 +93,20 @@ export default function Meeting() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-linear-to-br from-orange-950 via-orange-900 to-amber-900 text-white">
+    <div className="flex flex-col h-screen bg-linear-to-br from-orange-950 via-orange-900 to-amber-900 text-white pt-20">
 
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-3 bg-black/20 border-b border-white/10 backdrop-blur-sm">
-        {/* Brand */}
-        <Link to={"/"} className="flex items-center gap-2">
-          <span className="text-xl">🔥</span>
-          <span className="font-bold text-lg tracking-tight">ZoomFire</span>
-        </Link>
+      {/* ============================ Navbar ============================ */}
+      <Navbar />
 
-        {/* Meeting ID pill */}
-        <button
-          onClick={copyId}
-          className="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-1.5 rounded-full text-sm text-orange-200 transition-colors cursor-pointer"
-        >
-          {copied ? <BsCheckLg className="text-green-400" /> : <BsClipboard className="text-orange-400" />}
-          <span className="font-mono tracking-widest">{MEETING_ID}</span>
-          <span className="text-orange-300/50 text-xs">{copied ? 'Copied!' : 'Copy'}</span>
-        </button>
-
-        {/* Leave */}
-        <button
-          onClick={() => handleLeave()}
-          className="flex items-center gap-2 bg-red-500 hover:bg-red-400 text-white font-semibold px-4 py-2 rounded-xl transition-colors cursor-pointer text-sm"
-        >
-          <MdCallEnd size={18} />
-          Leave
-        </button>
-      </header>
+      {/* Meeting ID pill */}
+      <button
+        onClick={copyId}
+        className="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-1.5 rounded-full text-sm text-orange-200 transition-colors cursor-pointer"
+      >
+        {copied ? <BsCheckLg className="text-green-400" /> : <BsClipboard className="text-orange-400" />}
+        <span className="font-mono tracking-widest">{MEETING_ID}</span>
+        <span className="text-orange-300/50 text-xs">{copied ? 'Copied!' : 'Copy'}</span>
+      </button>
 
       {/* Video area */}
       <main className="flex-1 flex items-center justify-center p-6">
