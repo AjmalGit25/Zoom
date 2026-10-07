@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar.tsx';
 import { BiSolidVideoPlus } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
